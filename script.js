@@ -13,31 +13,94 @@ function destroy() {
         network = null;
     }
 }
-
 function draw() {
+    // debugger;
     destroy();
-    nodes = [];
-    edges = [];
-    console.log("ESTOY CORRIENDOOOO ")
-    // create a network
+    // nodes = [];
+    // edges = [];
+
+    const getColor = (colors) => {
+        console.log("cambio de color");
+        return colors[Math.floor(Math.random() * colors.length)];
+    } 
+    const colors = [
+        "#EDEAE0",
+        "#F2F3F4",
+        "#FAEBD7",
+        "#FFF8DC",
+        "#EFDFBB",
+        "#F0EAD6",
+        "#FFFAF0",
+        "#F8F8FF",
+        "#F4F0EC",
+        "#FAF0E6",
+        "#F8F4FF",
+        "#F5FFFA",
+        "#E9FFDB",
+        "#FDF5E6",
+        "#F1E9D2",
+        "#EAE0C8",
+        "#FFFDD0",
+        "#FFE4E1",
+        "#D0F0C0",
+        "#E0FFFF"
+    ]
+
     var container = document.getElementById("mynetwork");
+    
     var options = {
         layout: { randomSeed: seed }, // just to make sure the layout is the same when the locale is changed
         locale: "es",
+        width: "100%",
+        height: "100%",
+        // physics: false,
+        nodes:{
+            shape: "circle",
+            color: {
+                border: "#B2BEB5",
+                highlight: {
+                    border: "#2B7CE9",
+                    background: "#D2E5FF",
+                },
+                hover: {
+                    border: "#2B7CE9",
+                    background: "#D2E5FF",
+                },
+            },
+            shadow: {
+                enabled: true,
+                color: "rgba(0,0,0,0.3)",
+                size: 10,
+                x: 5,
+                y: 5,
+            },
+            font: {
+                face: "Outfit",
+                size: 14,
+                color: "#000000",
+                weight: "bold",
+            }
+        },
+        shadow: true,
         manipulation: {
+            enabled: true,
             addNode: function (data, callback) {
+                color = getColor(colors);
+                console.log("data: ", data);
+                data.label = "";
+                data.color = color;
                 // filling in the popup DOM elements
-                document.getElementById("node-operation").innerText = "Add Node";
+                document.getElementById("node-operation").innerText = "Añade un vértice";
                 editNode(data, clearNodePopUp, callback);
             },
             editNode: function (data, callback) {
                 // filling in the popup DOM elements
-                document.getElementById("node-operation").innerText = "Edit Node";
+                document.getElementById("node-operation").innerText = "Editar el vértice";
                 editNode(data, cancelNodeEdit, callback);
             },
             addEdge: function (data, callback) {
                 if (data.from == data.to) {
-                    var r = confirm("Do you want to connect the node to itself?");
+                    var r = confirm("Quiere conectar un nodo a si mismo?");
                     if (r != true) {
                         callback(null);
                         return;
@@ -58,6 +121,7 @@ function draw() {
 }
 
 function editNode(data, cancelAction, callback) {
+    console.log(data)
     document.getElementById("node-label").value = data.label;
     document.getElementById("node-saveButton").onclick = saveNodeData.bind(
         this,
@@ -126,11 +190,3 @@ function saveEdgeData(data, callback) {
 function init() {
     draw();
 }
-
-window.addEventListener("load", () => {
-    init();
-});
-document.addEventListener("DOMContentLoaded", function () {
-    // Esta función se ejecutará cuando el DOM esté completamente cargado
-    init();
-});
