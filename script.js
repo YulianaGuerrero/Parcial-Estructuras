@@ -99,6 +99,7 @@ function draw() {
                 editNode(data, cancelNodeEdit, callback);
             },
             addEdge: function (data, callback) {
+                data.label = "";
                 if (data.from == data.to) {
                     var r = confirm("Quiere conectar un nodo a si mismo?");
                     if (r != true) {
@@ -106,12 +107,12 @@ function draw() {
                         return;
                     }
                 }
-                document.getElementById("edge-operation").innerText = "Add Edge";
+                document.getElementById("edge-operation").innerText = "Añadir arista";
                 editEdgeWithoutDrag(data, callback);
             },
             editEdge: {
                 editWithoutDrag: function (data, callback) {
-                    document.getElementById("edge-operation").innerText = "Edit Edge";
+                    document.getElementById("edge-operation").innerText = "Editar arista";
                     editEdgeWithoutDrag(data, callback);
                 },
             },

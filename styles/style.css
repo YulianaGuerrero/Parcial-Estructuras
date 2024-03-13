@@ -1,7 +1,4 @@
 
-*{
-  /* font-family: IBM Plex Mono, monospace; */
-}
 #mynetwork {
   position: relative;
   width: 100%;
@@ -9,6 +6,77 @@
   margin: 2rem auto;
   border-radius: 5px;
   border: 1px solid lightgray;
+}
+
+.header {
+  grid-area: 1/1/1/2;
+  /* background-color: aqua; */
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: row;
+  font-family: IBM Plex Mono, monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  border-bottom: 0.2px solid #000000;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-container-grid {
+  grid-area: 2/1/3/2;
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+}
+.td {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+}
+
+.table-input {
+  border-radius: 5px;
+  padding: 0.2rem;
+  font-size: 15px;
+  font-family: "Nunito", sans-serif;
+  outline: none;
+  border: 1px solid #1e2952;
+}
+
+.cancel-button {
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #ffb6c1;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: #000000;
+}
+
+.save-button {
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #98fb98;
+  padding: 0.2rem;
+  font-size: 12px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: #000000;
+}
+.node-operation-title{
+  font-family: 'Outfit', sans-serif;
+  display: block;
+  font-weight: 400;
+}
+
+#edge-operation {
+  font-family: "Outfit", sans-serif;
+  display: block;
+  font-weight: 400;
 }
 table.legend_table {
   font-size: 12px;
@@ -41,7 +109,7 @@ div.table_description {
   width: 250px;
   height: 160px;
   background-color: white;
-  border: 1px solid #BEBFC5;
+  border: 1px solid #bebfc5;
   border-radius: 12px;
   /* border-color: 1px solid lightgray; */
   /* background-color: red; */
@@ -55,10 +123,10 @@ div.table_description {
   left: 170px;
   z-index: 299;
   width: 250px;
-  height: 90px;
+  height: 120px;
   border-radius: 5px;
 
-  border: 1px solid #BEBFC5;
+  border: 1px solid #bebfc5;
   background-color: white;
   padding: 10px;
   text-align: center;
